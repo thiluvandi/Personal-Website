@@ -6,209 +6,302 @@
   <title>Aditya Reddy K</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #fafafa;
-      --text: #111;
-      --muted: #666;
-      --accent: #1a1a1a;
-      --border: #e5e5e5;
+      --bg: #ffffff;
+      --bg-soft: #f7f7f7;
+      --text: #0f0f0f;
+      --muted: #6b6b6b;
+      --border: #e8e8e8;
       --tag-bg: #f0f0f0;
+      --tag-text: #333;
+      --nav-h: 60px;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
 
-    /* Layout */
-    .page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 64px 24px 96px;
-    }
-
-    /* Header */
-    header {
-      margin-bottom: 56px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .header-text { flex: 1; }
-
-    .header-photo {
-      width: 108px;
-      height: 108px;
-      border-radius: 12px;
-      object-fit: cover;
-      object-position: center top;
-      flex-shrink: 0;
-      filter: grayscale(8%);
-      transition: filter 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    .header-photo:hover {
-      filter: grayscale(0%);
-      transform: scale(1.04);
-    }
-
-    header h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-weight: 300;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-
-    .contact-row a {
-      color: var(--muted);
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
       display: flex;
       align-items: center;
-      gap: 5px;
-      transition: color 0.15s;
+      justify-content: space-between;
+      padding: 0 32px;
     }
 
-    .contact-row a:hover {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .contact-row svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 48px;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
+    .nav-logo {
       font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Summary */
-    .summary p {
-      color: #333;
-      max-width: 640px;
-    }
-
-    /* Experience & Education entries */
-    .entry {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4px 16px;
-      margin-bottom: 32px;
-    }
-
-    .entry:last-child { margin-bottom: 0; }
-
-    .entry-title {
-      font-weight: 500;
       font-size: 0.95rem;
+      letter-spacing: -0.2px;
     }
 
-    .entry-org {
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-
-    .entry-date {
-      font-size: 0.8rem;
-      color: var(--muted);
-      white-space: nowrap;
-      text-align: right;
-      grid-row: 1;
-      grid-column: 2;
-      padding-top: 2px;
-    }
-
-    .entry-location {
-      font-size: 0.8rem;
-      color: var(--muted);
-      grid-column: 2;
-    }
-
-    .entry-grade {
-      font-size: 0.8rem;
-      color: var(--muted);
-      grid-column: 2;
-    }
-
-    .entry-bullets {
-      grid-column: 1 / -1;
-      margin-top: 8px;
-      padding-left: 0;
+    .nav-links {
+      display: flex;
+      gap: 28px;
       list-style: none;
     }
 
-    .entry-bullets li {
-      position: relative;
-      padding-left: 14px;
-      font-size: 0.875rem;
-      color: #333;
-      margin-bottom: 6px;
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.15s;
     }
 
-    .entry-bullets li::before {
-      content: '–';
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── MAIN WRAPPER ── */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 80px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-greeting {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .hero-bio {
+      font-size: 0.95rem;
+      color: #444;
+      max-width: 500px;
+      margin-bottom: 28px;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .social-btn:hover {
+      border-color: #bbb;
+      color: var(--text);
+      background: var(--bg-soft);
+    }
+
+    .social-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hero-photo:hover { transform: scale(1.04); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    /* ── EXPERIENCE CARDS ── */
+    .exp-card {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-card:last-child { border-bottom: none; }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .exp-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-bullets li {
+      font-size: 0.875rem;
+      color: #444;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '↳';
       position: absolute;
       left: 0;
+      color: #bbb;
+      font-size: 0.75rem;
+      top: 2px;
+    }
+
+    /* ── EDUCATION CARDS ── */
+    .edu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .edu-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-card:last-child { border-bottom: none; }
+
+    .edu-degree {
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .edu-school {
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .edu-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .edu-year {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .edu-grade {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-block {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
-    @media (max-width: 540px) {
-      .skills-grid { grid-template-columns: 1fr; }
+    .skill-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
     }
 
-    .skill-group-label {
-      font-size: 0.75rem;
-      font-weight: 500;
+    .skill-label {
+      font-size: 0.78rem;
       color: var(--muted);
-      margin-bottom: 10px;
-      letter-spacing: 0.04em;
+      width: 110px;
+      flex-shrink: 0;
+      padding-top: 4px;
     }
 
     .tags {
@@ -219,101 +312,124 @@
 
     .tag {
       background: var(--tag-bg);
-      color: #333;
+      color: var(--tag-text);
       font-size: 0.78rem;
-      padding: 3px 10px;
-      border-radius: 4px;
+      padding: 4px 11px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: border-color 0.15s;
     }
 
-    /* Projects */
-    .project-item {
-      margin-bottom: 20px;
+    .tag:hover { border-color: #ccc; }
+
+    .tag-link {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.78rem;
+      padding: 4px 11px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: border-color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .project-item:last-child { margin-bottom: 0; }
+    .tag-link:hover { border-color: #ccc; }
+    .tag-link svg { width: 11px; height: 11px; }
+
+    /* ── PROJECTS ── */
+    .project-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .project-card {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-card:last-child { border-bottom: none; }
 
     .project-title {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.9rem;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
     }
 
     .project-desc {
       font-size: 0.875rem;
-      color: #444;
+      color: #555;
+      max-width: 580px;
     }
 
-    /* Leadership list */
-    .leadership-list {
-      list-style: none;
-      padding: 0;
+    /* ── AWARDS & INTERESTS ── */
+    .list-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .leadership-list li {
-      position: relative;
-      padding-left: 14px;
+    .list-item {
+      display: flex;
+      gap: 12px;
       font-size: 0.875rem;
-      color: #333;
-      margin-bottom: 8px;
     }
 
-    .leadership-list li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--muted);
-    }
-
-    .leadership-list strong {
+    .list-item-label {
       font-weight: 500;
       color: var(--text);
+      min-width: 170px;
+      flex-shrink: 0;
     }
 
-    /* Footer */
+    .list-item-desc {
+      color: #555;
+    }
+
+    /* ── FOOTER ── */
     footer {
-      margin-top: 64px;
-      padding-top: 24px;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--muted);
+      padding: 32px 0 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
-    .tag-link { text-decoration: none; }
-    .tag-link:hover { background: #e5e5e5; text-decoration: none; }
-
-    /* Inline award thumbnail */
-    .inline-award-thumb {
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-left: 8px;
-      vertical-align: middle;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    .proj-link-btn {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
     }
 
-    .inline-award-thumb:hover {
-      transform: scale(1.12);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    .proj-link-btn:hover {
+      border-color: #bbb;
+      color: var(--text);
+      background: var(--bg-soft);
+      text-decoration: none;
     }
 
-    /* Lightbox */
+    /* ── LIGHTBOX ── */
     .lightbox {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.7);
       z-index: 999;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
     .lightbox.open { display: flex; }
@@ -321,155 +437,214 @@
     .lightbox img {
       max-width: 100%;
       max-height: 90vh;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
       animation: lbIn 0.2s ease;
     }
 
     @keyframes lbIn {
-      from { opacity: 0; transform: scale(0.94); }
+      from { opacity: 0; transform: scale(0.95); }
       to   { opacity: 1; transform: scale(1); }
     }
 
     .lightbox-close {
       position: fixed;
-      top: 20px;
-      right: 24px;
+      top: 20px; right: 24px;
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
-      line-height: 1;
-      opacity: 0.8;
       background: none;
       border: none;
+      opacity: 0.75;
       padding: 4px 8px;
     }
 
     .lightbox-close:hover { opacity: 1; }
 
-    @media (max-width: 480px) {
-      .page { padding: 40px 20px 64px; }
-      header h1 { font-size: 1.6rem; }
-      .entry { grid-template-columns: 1fr; }
-      .entry-date, .entry-location, .entry-grade { text-align: left; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      #hero { flex-direction: column-reverse; padding-top: calc(var(--nav-h) + 48px); }
+      .hero-photo { width: 80px; height: 80px; }
+      .skill-row { flex-direction: column; gap: 6px; }
+      .skill-label { width: auto; }
+      .list-item { flex-direction: column; gap: 2px; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Aditya Reddy K</span>
+    <ul class="nav-links">
+      <li><a href="#hobby">Hobby Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <div class="page">
 
-    <!-- Header -->
-    <header>
-      <div class="header-text">
-      <h1>Aditya Reddy K</h1>
-      <p class="subtitle">Commerce Postgraduate · IRDAI Certified · Bangalore, India</p>
-      <div class="contact-row">
-        <a href="mailto:adityashockers99@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          adityashockers99@gmail.com
-        </a>
-        <a href="tel:+918050923559">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          +91 80509 23559
-        </a>
-        <a href="https://github.com/thiluvandi" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          github.com/thiluvandi
-        </a>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline;width:14px;height:14px;vertical-align:middle;margin-right:5px;">
-            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          Bangalore, KA
-        </span>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-text">
+        <p class="hero-greeting">Hey, I'm</p>
+        <h1>Aditya Reddy K</h1>
+        <p class="hero-tagline">Finance & Advisory · IRDAI Certified</p>
+        <p class="hero-bio">
+          Results-driven Commerce postgraduate with a proven track record in fast-paced advisory and operations roles. I bring together financial acumen, process automation, and a drive to consistently outperform.
+        </p>
+        <div class="social-row">
+          <a href="mailto:adityashockers99@gmail.com" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
+          </a>
+          <a href="https://github.com/thiluvandi" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <a href="tel:+918050923559" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 80509 23559
+          </a>
+          <span style="color:var(--muted);font-size:0.8rem;display:flex;align-items:center;gap:5px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bangalore, India
+          </span>
+        </div>
       </div>
-      </div>
-      <img src="photo.jpg" alt="Aditya Reddy K" class="header-photo" />
-    </header>
-
-    <!-- Summary -->
-    <section class="summary">
-      <p class="section-label">About</p>
-      <p>Results-driven Commerce postgraduate and IRDAI-certified professional with a proven track record of high performance in fast-paced advisory and operations roles. Extremely driven — determined to deliver quality work and grow rapidly across every role undertaken.</p>
+      <img src="photo.jpg" alt="Aditya Reddy K" class="hero-photo" onclick="openLightbox(this.src)" />
     </section>
 
-    <!-- Experience -->
-    <section>
-      <p class="section-label">Experience</p>
+    <!-- HOBBY PROJECTS -->
+    <section id="hobby">
+      <div class="section-header">
+        <h2 class="section-title">Hobby Projects</h2>
+      </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
+            <div>
+              <p class="project-title">Live Gate Status — RR Nagar</p>
+              <p class="project-desc">Tracks and forecasts railway crossing gate closures at RR Nagar, Bengaluru in real time, helping commuters avoid peak traffic around scheduled train timings.</p>
+            </div>
+            <a href="https://live-gate-status.vercel.app" target="_blank" rel="noopener" class="proj-link-btn">
+              Visit ↗
+            </a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
+            <div>
+              <p class="project-title">Expense Tracker</p>
+              <p class="project-desc">A personal finance app to log income and expenses, visualise spending through charts, and get breakdowns by category and time period.</p>
+            </div>
+            <a href="https://exp-tracker-byar.vercel.app" target="_blank" rel="noopener" class="proj-link-btn">
+              Visit ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="entry">
-        <div class="entry-title">Insurance Advisor <span style="font-weight:400;color:var(--muted);">· IRDAI Certified</span></div>
-        <div class="entry-date">Aug 2024 – Jun 2025</div>
-        <div class="entry-org">Zerodha's Ditto Insurance</div>
-        <div class="entry-location">Bangalore, India</div>
-        <ul class="entry-bullets">
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <span class="exp-role">Insurance Advisor · IRDAI Certified</span>
+          <span class="exp-date">Aug 2024 – Jun 2025</span>
+        </div>
+        <p class="exp-company">Zerodha's Ditto Insurance · Bangalore</p>
+        <ul class="exp-bullets">
           <li>Ranked consistently among the top 3 performers in the advisory team throughout the entire tenure.</li>
           <li>Awarded <strong>"Gold"</strong> status in Q4 2024 for outstanding performance and exceptional client satisfaction metrics.</li>
-          <li>Automated the 'Bonus Calculation' workflow by designing a drag-and-drop Bonus Calculator, streamlining operations and significantly improving team accuracy and processing efficiency.</li>
+          <li>Automated the 'Bonus Calculation' workflow by designing a drag-and-drop Bonus Calculator, streamlining operations and improving team accuracy.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-title">Operations & Sales Intern</div>
-        <div class="entry-date">Apr 2019 – May 2019</div>
-        <div class="entry-org">Urban Company · Fitness & Wellbeing Department</div>
-        <div class="entry-location">Bangalore, India</div>
-        <ul class="entry-bullets">
+      <div class="exp-card">
+        <div class="exp-top">
+          <span class="exp-role">Operations & Sales Intern</span>
+          <span class="exp-date">Apr 2019 – May 2019</span>
+        </div>
+        <p class="exp-company">Urban Company · Fitness & Wellbeing · Bangalore</p>
+        <ul class="exp-bullets">
           <li>Managed backend sales and financial workflows for the Fitness and Wellbeing division, ensuring accurate data tracking.</li>
-          <li>Facilitated seamless onboarding of service professionals onto the platform to support regional supply growth.</li>
-          <li>Provided high-quality after-sales support to service professionals, resolving operational bottlenecks efficiently.</li>
+          <li>Facilitated seamless onboarding of service professionals to support regional supply growth.</li>
+          <li>Provided high-quality after-sales support, resolving operational bottlenecks efficiently.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Education -->
-    <section>
-      <p class="section-label">Education</p>
-
-      <div class="entry">
-        <div class="entry-title">Master of Commerce (M.Com)</div>
-        <div class="entry-date">2020 – 2022</div>
-        <div class="entry-org">St. Joseph's College of Commerce</div>
-        <div class="entry-grade">Grade: A</div>
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
       </div>
-
-      <div class="entry">
-        <div class="entry-title">PG Diploma in Financial Management (PGDFM)</div>
-        <div class="entry-date">2020 – 2021</div>
-        <div class="entry-org">St. Joseph's College of Commerce</div>
-        <div class="entry-grade">Grade: O</div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Bachelor of Commerce (B.Com)</div>
-        <div class="entry-date">2017 – 2020</div>
-        <div class="entry-org">St. Joseph's University (Autonomous)</div>
-        <div class="entry-grade">Grade: A</div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div>
+            <p class="edu-degree">Master of Commerce (M.Com)</p>
+            <p class="edu-school">St. Joseph's College of Commerce</p>
+          </div>
+          <div class="edu-meta">
+            <span class="edu-year">2020 – 2022</span>
+            <span class="edu-grade">Grade: A</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div>
+            <p class="edu-degree">PG Diploma in Financial Management (PGDFM)</p>
+            <p class="edu-school">St. Joseph's College of Commerce</p>
+          </div>
+          <div class="edu-meta">
+            <span class="edu-year">2020 – 2021</span>
+            <span class="edu-grade">Grade: O</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div>
+            <p class="edu-degree">Bachelor of Commerce (B.Com)</p>
+            <p class="edu-school">St. Joseph's University (Autonomous)</p>
+          </div>
+          <div class="edu-meta">
+            <span class="edu-year">2017 – 2020</span>
+            <span class="edu-grade">Grade: A</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section>
-      <p class="section-label">Skills</p>
-      <div class="skills-grid">
-        <div>
-          <p class="skill-group-label">Technical & Software</p>
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-block">
+        <div class="skill-row">
+          <span class="skill-label">Technical</span>
           <div class="tags">
-            <a href="https://github.com/thiluvandi" target="_blank" rel="noopener" class="tag tag-link">github.com/thiluvandi</a>
+            <a href="https://github.com/thiluvandi" target="_blank" rel="noopener" class="tag-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              github.com/thiluvandi
+            </a>
             <span class="tag">Advanced Excel</span>
             <span class="tag">MS Office Suite</span>
             <span class="tag">Website Design</span>
             <span class="tag">Adobe Premiere Pro</span>
           </div>
         </div>
-        <div>
-          <p class="skill-group-label">Professional</p>
+        <div class="skill-row">
+          <span class="skill-label">Professional</span>
           <div class="tags">
             <span class="tag">Financial Management</span>
             <span class="tag">Client Advisory</span>
@@ -478,51 +653,91 @@
             <span class="tag">Cross-functional Communication</span>
           </div>
         </div>
+        <div class="skill-row">
+          <span class="skill-label">Languages</span>
+          <div class="tags">
+            <span class="tag">English</span>
+            <span class="tag">Hindi</span>
+            <span class="tag">Kannada</span>
+            <span class="tag">Tamil</span>
+            <span class="tag">Telugu</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section>
-      <p class="section-label">Projects & Research</p>
-
-      <div class="project-item">
-        <p class="project-title">EV Consumer Adoption Research Paper</p>
-        <p class="project-desc">"Consumer Adoption of EVs in Bangalore District" — conducted primary market research and data analysis investigating consumer behavior and green energy transition metrics.</p>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Projects & Research</h2>
       </div>
-
-      <div class="project-item">
-        <p class="project-title">Short Film Production</p>
-        <p class="project-desc">Directed, shot, and edited an independent short film based on a high-profile judicial case, demonstrating narrative structure, project coordination, and digital media editing skills.</p>
-      </div>
-
-      <div class="project-item">
-        <p class="project-title">Web Design</p>
-        <p class="project-desc">Conceptualized, structured, and executed a fully functional website layout as part of a major collaborative academic project.</p>
-      </div>
-
-      <div class="project-item">
-        <p class="project-title">Typing Proficiency</p>
-        <p class="project-desc">70 WPM certified typing speed.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <p class="project-title">EV Consumer Adoption Research Paper</p>
+          <p class="project-desc">"Consumer Adoption of EVs in Bangalore District" — primary market research and data analysis investigating consumer behavior and green energy transition metrics.</p>
+        </div>
+        <div class="project-card">
+          <p class="project-title">Short Film Production</p>
+          <p class="project-desc">Directed, shot, and edited an independent short film based on a high-profile judicial case — demonstrating narrative structure, project coordination, and digital media editing skills.</p>
+        </div>
+        <div class="project-card">
+          <p class="project-title">Bonus Calculator Automation</p>
+          <p class="project-desc">Designed a drag-and-drop Bonus Calculator at Ditto Insurance using Google AppsScript, eliminating manual workflow and significantly improving team processing accuracy.</p>
+        </div>
+        <div class="project-card">
+          <p class="project-title">Web Design</p>
+          <p class="project-desc">Conceptualized, structured, and executed a fully functional website layout as part of a major collaborative academic project.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Leadership & Interests -->
-    <section>
-      <p class="section-label">Leadership, Awards & Interests</p>
-      <ul class="leadership-list">
-        <li><strong>Competitive Quizzing</strong> — National finalist qualifier for the pre-inter city rounds of the Tata Crucible Campus Quiz.</li>
-        <li><strong>Event Organization</strong> — Orchestrated multiple inter-collegiate and intra-college events, managing cross-functional logistics, budgeting, and team coordination.</li>
-        <li><strong>Athletics</strong> — Represented a C-Division Football Club in Bangalore; achieved top rankings in regional inter-school and inter-collegiate tournaments.</li>
-        <li><strong>Model United Nations</strong> — Handpicked to represent the Kyoto Protocol delegation for Christ Junior College.</li>
-        <li><strong>Cultural Achievements</strong> — Secured 1st place in multiple cultural, gaming, and strategic management intercollegiate festivals.</li>
-        <li><strong>Languages</strong> — Native/professional fluency in English; spoken proficiency in Hindi, Kannada, Tamil, and Telugu.</li>
-        <li><strong>Interests</strong> — Advanced economics, geopolitics, equity markets, current affairs, biographies, DIY electronic prototyping.</li>
-      </ul>
+    <!-- AWARDS & INTERESTS -->
+    <section id="awards">
+      <div class="section-header">
+        <h2 class="section-title">Leadership & Interests</h2>
+      </div>
+      <div class="list-items">
+        <div class="list-item">
+          <span class="list-item-label">Tata Crucible Campus Quiz</span>
+          <span class="list-item-desc">National finalist qualifier for the pre-inter city rounds of one of India's most prestigious campus quizzes.</span>
+        </div>
+        <div class="list-item">
+          <span class="list-item-label">Event Organization</span>
+          <span class="list-item-desc">Orchestrated multiple inter-collegiate and intra-college events, managing logistics, budgeting, and team coordination.</span>
+        </div>
+        <div class="list-item">
+          <span class="list-item-label">Football</span>
+          <span class="list-item-desc">Represented a C-Division Football Club in Bangalore; top rankings in regional inter-school and inter-collegiate tournaments.</span>
+        </div>
+        <div class="list-item">
+          <span class="list-item-label">Model United Nations</span>
+          <span class="list-item-desc">Handpicked to represent the Kyoto Protocol delegation for Christ Junior College.</span>
+        </div>
+        <div class="list-item">
+          <span class="list-item-label">Interests</span>
+          <span class="list-item-desc">Advanced economics, geopolitics, equity markets, current affairs, biographies, DIY electronic prototyping.</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Get in touch</h2>
+      </div>
+      <p style="font-size:0.95rem;color:#444;margin-bottom:20px;max-width:480px;">
+        Open to new opportunities and conversations. Feel free to reach out — I usually respond within a day.
+      </p>
+      <a href="mailto:adityashockers99@gmail.com" class="social-btn" style="font-size:0.875rem;padding:10px 18px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        adityashockers99@gmail.com
+      </a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-      <span>Aditya Reddy K</span>
+      <span>© 2025 Aditya Reddy K</span>
+      <span>Bangalore, India</span>
     </footer>
 
   </div>
@@ -541,9 +756,7 @@
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
     }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 
 </body>
